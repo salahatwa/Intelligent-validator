@@ -74,7 +74,7 @@ Then call ValidateUtils.check () method can be
 ```
 try {
     //....
-    ValidateUtils.check(user);
+    ValidateUtils.check(model);
     //.....
 }catch (ParamsException e){
     throw e;
