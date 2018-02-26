@@ -98,6 +98,7 @@ If you want to catch exceptions, you can also add try / catch (not recommended) 
 
 ## Download the code and build project 
 ```mvn clean install```
+```Put The following Dependency in pom.xml file in your maven project```
 
 ```
 <dependencies>
