@@ -1,9 +1,6 @@
 package com.Intelligent.validate;
 
-import com.Intelligent.annotations.*;
 import com.Intelligent.core.ValidateCache;
-import com.Intelligent.core.ValidateHandler;
-import com.Intelligent.core.Validator;
 import com.Intelligent.utils.CommonUtil;
 import com.Intelligent.utils.Parameter;
 import com.Intelligent.utils.ReflectUtils;
@@ -14,8 +11,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
@@ -42,124 +38,18 @@ public class ValidateUtils {
 	}
 
 	public ValidateUtils notNull() {
-		return notNull(null);
-	}
-
-	public ValidateUtils notNull(String msg) {
-		ValidateHandler.notNull(value, msg);
-		return this;
-	}
-
-	public ValidateUtils regex(String regex) {
-		return regex(regex, null);
-	}
-
-	public ValidateUtils regex(String regex, String msg) {
-		ValidateHandler.regex(regex, value, msg);
-		return this;
-	}
-
-	public ValidateUtils max(Number max) {
-		return max(max, null);
-	}
-
-	public ValidateUtils max(Number max, String msg) {
-		ValidateHandler.max(max, value, msg);
-		return this;
-	}
-
-	public ValidateUtils min(Number min) {
-		return min(min, null);
-	}
-
-	public ValidateUtils min(Number min, String msg) {
-		ValidateHandler.min(min, value, msg);
-		return this;
-	}
-
-	public ValidateUtils maxLength(int max) {
-		return maxLength(max, null);
-	}
-
-	public ValidateUtils maxLength(int max, String msg) {
-		ValidateHandler.maxLength(max, value, msg);
-		return this;
-	}
-
-	public ValidateUtils minLength(int min) {
-		return minLength(min, null);
-	}
-
-	public ValidateUtils minLength(int min, String msg) {
-		ValidateHandler.minLength(min, value, msg);
-		return this;
-	}
-
-	public ValidateUtils chinese() {
-		return chinese(null);
-	}
-
-	public ValidateUtils chinese(String msg) {
-		ValidateHandler.chinese(value, msg);
-		return this;
-	}
-
-	public ValidateUtils english() {
-		return english(null);
-	}
-
-	public ValidateUtils english(String msg) {
-		ValidateHandler.english(value, msg);
-		return this;
-	}
-
-	public ValidateUtils phone() {
-		return phone(null);
-	}
-
-	public ValidateUtils phone(String msg) {
-		ValidateHandler.phone(value, msg);
-		return this;
-	}
-
-	public ValidateUtils email() {
-		return email(null);
-	}
-
-	public ValidateUtils email(String msg) {
-		ValidateHandler.email(value, msg);
-		return this;
-	}
-
-	public ValidateUtils date(String format) {
-		return date(format, null);
-	}
-
-	public ValidateUtils date(String format, String msg) {
-		ValidateHandler.date(format, value, msg);
-		return this;
-	}
-
-	public ValidateUtils idCard() {
-		return idCard(null);
-	}
-
-	public ValidateUtils idCard(String msg) {
-		ValidateHandler.idCard(value, msg);
-		return this;
-	}
-
-	public ValidateUtils ip() {
-		return ip(null);
-	}
-
-	public ValidateUtils ip(String msg) {
-		ValidateHandler.ip(value, msg);
-		return this;
-	}
-
-	public ValidateUtils acceptedValues(String msg, List<String> values) {
-		ValidateHandler.acceptedValues(value, values, msg);
+		CommonUtil.notNull(value);
+		if (value instanceof String) {
+			CommonUtil.notNull((String) value);
+		} else if (value instanceof Number) {
+			CommonUtil.notNull((Number) value);
+		} else if (value instanceof Collection) {
+			CommonUtil.notNull((Collection) value);
+		} else if (value instanceof Map) {
+			CommonUtil.notNull((Map) value);
+		} else if (value instanceof Object[]) {
+			CommonUtil.notNull((Object[]) value);
+		}
 		return this;
 	}
 
@@ -179,10 +69,6 @@ public class ValidateUtils {
 		}
 		for (Field field : fieldSet) {
 			Annotation[] annotations = field.getAnnotations();
-
-			for (Annotation annotation : annotations) {
-				System.err.println(annotation + "::");
-			}
 
 			annotations = field.getAnnotations();
 
@@ -212,23 +98,21 @@ public class ValidateUtils {
 							Object o = key.newInstance();
 
 							initialize.invoke(o, initializeArglist);
-							
+
 							Method isValid = key.getMethod("isValid", anno.getObjectType());
-							
+
 							Object isValidArglist[] = new Object[1];
 							isValidArglist[0] = fieldValue;
-							
+
 							System.out.println(fieldValue);
 
 							isValid.invoke(o, isValidArglist);
-							
-							
+
 						} catch (NoSuchMethodException e) {
 							e.printStackTrace();
 						} catch (SecurityException e) {
 							e.printStackTrace();
-						}
-						catch (IllegalAccessException e) {
+						} catch (IllegalAccessException e) {
 							e.printStackTrace();
 						} catch (IllegalArgumentException e) {
 							e.printStackTrace();
@@ -242,47 +126,6 @@ public class ValidateUtils {
 				}
 
 			}
-			// if (annotation instanceof NotNull) {
-			// validateUtils.and(fieldValue).notNull(((NotNull) annotation).msg());
-			// } else if (annotation instanceof Max) {
-			// Max max = (Max) annotation;
-//			 validateUtils.and(fieldValue).max(max.value(), max.msg());
-			// } else if (annotation instanceof Min) {
-			// Min min = (Min) annotation;
-			// validateUtils.and(fieldValue).min(min.value(), min.msg());
-			// } else if (annotation instanceof MaxLength) {
-			// MaxLength maxLength = (MaxLength) annotation;
-			// validateUtils.and(fieldValue).maxLength(maxLength.value(), maxLength.msg());
-			// } else if (annotation instanceof MinLength) {
-			// MinLength minLength = (MinLength) annotation;
-			// validateUtils.and(fieldValue).minLength(minLength.value(), minLength.msg());
-			// } else if (annotation instanceof Email) {
-			// validateUtils.and(fieldValue).email(((Email) annotation).msg());
-			// } else if (annotation instanceof Phone) {
-			// validateUtils.and(fieldValue).phone(((Phone) annotation).msg());
-			// } else if (annotation instanceof IdCard) {
-			// validateUtils.and(fieldValue).idCard(((IdCard) annotation).msg());
-			// } else if (annotation instanceof Regex) {
-			// Regex regex = (Regex) annotation;
-			// validateUtils.and(fieldValue).regex(regex.value(), regex.msg());
-			// } else if (annotation instanceof Date) {
-			// Date date = (Date) annotation;
-			// String format = date.format();
-			// validateUtils.and(fieldValue).date(format, date.msg());
-			// } else if (annotation instanceof Langauge) {
-			// validateUtils.and(fieldValue).chinese(((Langauge) annotation).msg());
-			// } else if (annotation instanceof IP) {
-			// validateUtils.and(fieldValue).ip(((IP) annotation).msg());
-			// } else if (annotation instanceof AcceptedValues) {
-			// List<String> values = new ArrayList<>();
-			// AcceptedValues cc = (AcceptedValues) annotation;
-			// for (String val : cc.acceptValues()) {
-			// values.add(val.toLowerCase());
-			// }
-			// validateUtils.and(fieldValue).acceptedValues(((AcceptedValues)
-			// annotation).msg(),values);
-			// }
-			// }
 		}
 		return validateUtils;
 	}

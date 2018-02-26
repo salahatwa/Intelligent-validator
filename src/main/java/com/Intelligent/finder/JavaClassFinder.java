@@ -48,11 +48,8 @@ public class JavaClassFinder  {
 		for (int i=0; i< classPathRoots.length; i++) {
 			String path = classPathRoots[i];
 			if (path.endsWith(".jar")) {
-				//				LOG.warn("walkClassPath(): reading from jar not yet implemented, jar file=" + path);
 				continue;
 			}
-			//			LOG.debug("walkClassPath(): checking classpath root: " + path);
-			// have to reset class path base so it can instance classes properly
 			fileHandler.updateClassPathBase(path);
 			fileWalker.setBaseDir(path);
 			fileWalker.walk();

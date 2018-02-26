@@ -1,4 +1,4 @@
-package com.fetech.test.smart.validate.model;
+package com.Intelligent.model;
 
 import java.util.Date;
 
@@ -6,6 +6,7 @@ import javax.xml.bind.ValidationException;
 
 import com.Intelligent.annotations.*;
 import com.Intelligent.annotations.Langauge.LanguageType;
+import com.Intelligent.annotations.Regex.RegexType;
 import com.Intelligent.validate.ValidateUtils;
 
 /**
@@ -21,7 +22,6 @@ public class User {
 
 	private Date birthday;
 
-	@IdCard
 	private String idcard;
 
 	@Langauge(type = LanguageType.AR)
@@ -31,14 +31,12 @@ public class User {
 	@Min(12)
 	private int age;
 
-	@Email
 	@MaxLength(50)
 	private String email;
 
-	@Phone
 	private String phone;
 
-	@Regex("[1-9]([0-9]{5,11})")
+	@Regex(value = "[1-9]([0-9]{5,11})", type = RegexType.REGEX_EMAIL)
 	private String qq;
 
 	@AcceptedValues(acceptValues = { "F", "M" }, msg = "Invalid Geneder Type please Type : F OR M")
@@ -120,10 +118,8 @@ public class User {
 		User user = new User();
 		user.setAge(222);
 		user.setName("aaa");
-		user.setText("啊大神，阿斯蒂芬！");
+		user.setText("TEXT");
 		user.setGender("F");
-
-		// ValidateUtils.is("sdsdsdsds").chinese();
 
 		try {
 			ValidateUtils.check(user);

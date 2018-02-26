@@ -1,18 +1,15 @@
 package com.Intelligent.utils;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import org.apache.commons.collections.map.HashedMap;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.Intelligent.core.Validator;
 import com.Intelligent.finder.JavaClassFinder;
 
@@ -22,6 +19,8 @@ import com.Intelligent.finder.JavaClassFinder;
  *
  */
 public class ReflectUtils {
+
+	private static Logger LOGGER = LoggerFactory.getLogger(ReflectUtils.class);
 
 	public static <T> Set<Field> getFieldsByClass(Class<T> cls) {
 		Set<Field> fieldSet = new HashSet<>();
@@ -46,17 +45,14 @@ public class ReflectUtils {
 		String originalClassPath = System.getProperty("java.class.path");
 		String originalCustomClassPath = System.getProperty(JavaClassFinder.CUSTOM_CLASS_PATH_PROPERTY);
 		if (originalCustomClassPath != null) {
-			System.out.println("custom classpath was already set to=" + originalCustomClassPath);
+			LOGGER.warn("custom classpath was already set to={}", originalCustomClassPath);
 		}
-		System.out.println("original classpath=" + originalClassPath);
 
 		System.setProperty("java.class.path", originalClassPath);
 		if (originalCustomClassPath != null) {
 			System.setProperty(JavaClassFinder.CUSTOM_CLASS_PATH_PROPERTY, originalCustomClassPath);
-			System.out.println("custom classpath sysproperty reset to=" + originalCustomClassPath);
+			LOGGER.warn("custom classpath sysproperty reset to={}", originalCustomClassPath);
 		} else {
-			System.out.println(
-					"original custom classpath sysproperty was blank, clearing any custom classpath value value set in tests");
 			System.clearProperty(JavaClassFinder.CUSTOM_CLASS_PATH_PROPERTY);
 		}
 
@@ -76,13 +72,8 @@ public class ReflectUtils {
 					parameter.setAnnotation(type1);
 					parameter.setObjectType(type2);
 
-					System.err.println(class1 + "::" + type1 + "::::" + type2);
-					// for (Type genericType : genericTypes) {
-					// System.err.println(class1.getName() + " Generic type: " + thisClass);
 					map.put(class1, parameter);
-					// }
 				}
-				// System.err.println(type.getTypeName());
 			}
 		}
 		return map;

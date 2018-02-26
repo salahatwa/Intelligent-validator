@@ -56,11 +56,8 @@ public class FileWalker {
 		try {
 			File rootDir = new File(baseDir);
 			walk(rootDir);
-			// notify handler that we are done walking
 			handler.onComplete();
 		} catch (Exception e) {
-			// if any sort of error occurs due to bad file path, or other issues, just catch and swallow
-			// because we don't expect any Exceptions in normal course of usage
 			e.printStackTrace();
 		}
 	}
