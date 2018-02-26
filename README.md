@@ -19,6 +19,9 @@ The following verification methods are currently provided to support continued e
   | AcceptedValues | Validate if field value in your values list |
   | Regex | Custom regular verification or choose from Predefind regular Email-Phone-IP-English|
   | Date | Date format verification |
+  
+## Third, usage introduction
+You can custom annotation and custom your own  implementation .
 
 ### 1. Single parameter verification
 ```
@@ -31,12 +34,12 @@ ValidateUtils.is(50).min(20).max(60);
 
 Through and () support for continuous write (even write directly switch the calibration object)
 
-```java
+```
 ValidateUtils.is("a").notNull().and("test").maxLength(20).minLength(4).and(50).min(20).max(60);
 ```
 Support for custom error messages
 
-```java
+```
 ValidateUtils.is("test").maxLength(20,"The maximum length can not exceed 20 words").minLength(4,"The minimum length can not be less than 4 words");
 ```
 ### 2. Verify the entire object (by annotation)
