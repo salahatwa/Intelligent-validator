@@ -107,8 +107,6 @@ public class ValidateUtils {
 							Object isValidArglist[] = new Object[1];
 							isValidArglist[0] = fieldValue;
 
-							System.out.println(fieldValue);
-
 							isValid.invoke(o, isValidArglist);
 
 						} catch (NoSuchMethodException e) {
