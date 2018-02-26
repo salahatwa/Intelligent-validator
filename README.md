@@ -1,6 +1,5 @@
 # Intelligent-validator
-Java Bean Validation API
-<p> Lightweight annotations verification framework </p>
+<p> Java Annotation Validation API framework </p>
 <p> Support comments, full-featured, easy to use </p>
 
 ## First, the function profile
@@ -22,7 +21,7 @@ The following verification methods are currently provided to support continued e
   | Date | Date format verification |
 
 ### 1. Single parameter verification
-```java
+```
 ValidateUtils.is("a").notNull();
  
 ValidateUtils.is("test").maxLength(20).minLength(4);
@@ -56,9 +55,6 @@ public class Model {
     @Min(12)
     private int age;
 
-    @Phone
-    private String phone;
-
     @Regex("[1-9]([0-9]{5,11})")
     private String customRegex;
     
@@ -86,7 +82,7 @@ try {
 
 The same support for continuous writing
 
-```java
+```
 ValidateUtils.check(user).and("2017-06-05").date("yyyy-MM-dd");
 ```
 
