@@ -36,23 +36,93 @@ public class ValidateUtils {
 		return this;
 	}
 
-	/**
-	 * This Method Check If Object IS NUll or not
-	 * @return
-	 */
 	public ValidateUtils notNull() {
-		CommonUtil.notNull(value);
-		if (value instanceof String) {
-			CommonUtil.notNull((String) value);
-		} else if (value instanceof Number) {
-			CommonUtil.notNull((Number) value);
-		} else if (value instanceof Collection) {
-			CommonUtil.notNull((Collection) value);
-		} else if (value instanceof Map) {
-			CommonUtil.notNull((Map) value);
-		} else if (value instanceof Object[]) {
-			CommonUtil.notNull((Object[]) value);
-		}
+		return notNull(null);
+	}
+
+	public ValidateUtils notNull(String msg) {
+		ValidateHandler.notNull(value, msg);
+		return this;
+	}
+
+	public ValidateUtils regex(String regex) {
+		return regex(regex, null);
+	}
+
+	public ValidateUtils regex(String regex, String msg) {
+		ValidateHandler.regex(regex, value, msg);
+		return this;
+	}
+
+	public ValidateUtils max(Number max) {
+		return max(max, null);
+	}
+
+	public ValidateUtils max(Number max, String msg) {
+		ValidateHandler.max(max, value, msg);
+		return this;
+	}
+
+	public ValidateUtils min(Number min) {
+		return min(min, null);
+	}
+
+	public ValidateUtils min(Number min, String msg) {
+		ValidateHandler.min(min, value, msg);
+		return this;
+	}
+
+	public ValidateUtils maxLength(int max) {
+		return maxLength(max, null);
+	}
+
+	public ValidateUtils maxLength(int max, String msg) {
+		ValidateHandler.maxLength(max, value, msg);
+		return this;
+	}
+
+	public ValidateUtils minLength(int min) {
+		return minLength(min, null);
+	}
+
+	public ValidateUtils minLength(int min, String msg) {
+		ValidateHandler.minLength(min, value, msg);
+		return this;
+	}
+
+	public ValidateUtils english() {
+		return english(null);
+	}
+
+	public ValidateUtils english(String msg) {
+		ValidateHandler.english(value, msg);
+		return this;
+	}
+
+	public ValidateUtils phone() {
+		return phone(null);
+	}
+
+	public ValidateUtils phone(String msg) {
+		ValidateHandler.phone(value, msg);
+		return this;
+	}
+
+	public ValidateUtils email() {
+		return email(null);
+	}
+
+	public ValidateUtils email(String msg) {
+		ValidateHandler.email(value, msg);
+		return this;
+	}
+
+	public ValidateUtils date(String format) {
+		return date(format, null);
+	}
+
+	public ValidateUtils date(String format, String msg) {
+		ValidateHandler.date(format, value, msg);
 		return this;
 	}
 
