@@ -1,8 +1,6 @@
 # Intelligent-validator
 Java Bean Validation API
-
-# smart-validator
-<p> Lightweight server verification framework </p>
+<p> Lightweight annotations verification framework </p>
 <p> Support comments, full-featured, easy to use </p>
 
 ## First, the function profile
@@ -74,7 +72,7 @@ public class Model {
 
 Then call ValidateUtils.check () method can be
 
-```java
+```
 try {
     //....
     ValidateUtils.check(user);
@@ -99,22 +97,16 @@ Generally do not need special treatment, because the background check is a safet
 If you want to catch exceptions, you can also add try / catch (not recommended) to your code, or add global interceptors to catch such exceptions. <br>
 
 
-### Third, the deployment instructions
-Get the latest version of the jar package can be - [Download] (https://gitee.com/fetech-framework/smart-validator/releases/v1.1.0), and then added to the project's dependent library. <br>
-Projects using maven build, you can also download the source of self-compiled <br>
-
-#### Third-party libraries rely on the following, the general project is used
-
 ## Download the code and build project 
 ```mvn clean install```
 
 ```
 <dependencies>
    <dependency>
-			<groupId>com.intelligent.validator</groupId>
-			<artifactId>Intelligent-validator</artifactId>
-			<version>1.1.0</version>
-		</dependency>
+	<groupId>com.intelligent.validator</groupId>
+	<artifactId>Intelligent-validator</artifactId>
+	<version>1.1.0</version>
+   </dependency>
 </dependencies>
 ```
 
