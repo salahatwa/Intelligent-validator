@@ -7,7 +7,7 @@ import javax.xml.bind.ValidationException;
 import com.Intelligent.annotations.*;
 import com.Intelligent.annotations.Langauge.LanguageType;
 import com.Intelligent.annotations.Regex.RegexType;
-import com.Intelligent.validate.ValidateUtils;
+import com.Intelligent.core.ValidateUtils;
 
 /**
  * 

@@ -5,7 +5,7 @@ import java.io.File;
 /**
  * Convert a File object to a Class
  * 
- * @author Sam
+ * @author Salah atwa
  * 
  */
 public class FileToClassConverter {

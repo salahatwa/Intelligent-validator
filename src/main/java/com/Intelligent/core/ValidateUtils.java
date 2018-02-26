@@ -1,6 +1,5 @@
-package com.Intelligent.validate;
+package com.Intelligent.core;
 
-import com.Intelligent.core.ValidateCache;
 import com.Intelligent.utils.CommonUtil;
 import com.Intelligent.utils.Parameter;
 import com.Intelligent.utils.ReflectUtils;
@@ -37,6 +36,10 @@ public class ValidateUtils {
 		return this;
 	}
 
+	/**
+	 * This Method Check If Object IS NUll or not
+	 * @return
+	 */
 	public ValidateUtils notNull() {
 		CommonUtil.notNull(value);
 		if (value instanceof String) {
