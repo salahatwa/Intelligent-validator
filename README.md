@@ -6,7 +6,7 @@
 Mainly to provide convenient background data validation, support for a single field or parameter validation, but also support the verification of objects through annotation, usage is simple. <br>
 Provide basic non-empty, length, size and other verification methods, but also provide some special regular verification, ID card, telephone, email, IP and other verification methods.
 
-## Second, usage introduction
+## Second, Quick Annotation Overview
 The following verification methods are currently provided to support continued expansion
 
   | annotation       | Description    |
@@ -20,7 +20,7 @@ The following verification methods are currently provided to support continued e
   | Regex | Custom regular verification or choose from Predefind regular Email-Phone-IP-English|
   | Date | Date format verification |
   
-## Third, usage introduction
+## Third, usage  Make it Third Party
 You can custom annotation and custom your own  implementation .
 
 ### 1. Single parameter verification
