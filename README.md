@@ -47,6 +47,9 @@ Define annotations on the properties of the class, and support for custom error 
 ```
 public class Model {
 
+    @AcceptedValues(acceptValues = { "F", "M" }, message = "Invalid Geneder Type please Type : F OR M")
+    private String gender;
+
     @NotNull(msg = "Model Name can not be empty")
     @MaxLength(value = 50,msg = "Name can not exceed 50 characters")
     private String modelName;
