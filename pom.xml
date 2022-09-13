@@ -6,7 +6,7 @@
 	<groupId>com.intelligent.validator</groupId>
 	<artifactId>Intelligent-validator</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.0-${timestamp}</version>
+	<version>1.0.5</version>
 	<name>salahatwa</name>
 	<url>http://maven.apache.org</url>
 	<build>
