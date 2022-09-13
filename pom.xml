@@ -6,7 +6,7 @@
 	<groupId>com.intelligent.validator</groupId>
 	<artifactId>Intelligent-validator</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.5</version>
+	<version>1.0.0-${timestamp}</version>
 	<name>salahatwa</name>
 	<url>http://maven.apache.org</url>
 	<build>
@@ -39,6 +39,10 @@
 	<properties>
 		<junit.version>4.12</junit.version>
 		<slf4j.version>1.7.13</slf4j.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<timestamp>${maven.build.timestamp}</timestamp>
+		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
 		<commons.lang.version>2.6</commons.lang.version>
 		<commons.collections.version>3.2.2</commons.collections.version>
 		<commons.beanutils.version>1.9.3</commons.beanutils.version>
