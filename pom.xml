@@ -9,32 +9,21 @@
 	<version>1.0.0-${timestamp}</version>
 	<name>salahatwa</name>
 	<url>http://maven.apache.org</url>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-
+	
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.4.RELEASE</version>
+		<relativePath />
+	</parent>
+	
 	<scm>
 		<connection>scm:git:git@github.com:salahatwa/Intelligent-validator.git</connection>
 		<developerConnection>scm:git:git@github.com:salahatwa/Intelligent-validator.git</developerConnection>
 		<url>https://github.com/salahatwa/Intelligent-validator/tree/master</url>
 	</scm>
 	
-<distributionManagement>
-    <repository>
-      <id>github</id>
-      <name>GitHub Packages</name>
-      <url>https://maven.pkg.github.com/salahatwa/Intelligent-validator</url>
-    </repository>
-  </distributionManagement>
+	
 
 	<properties>
 		<junit.version>4.12</junit.version>
@@ -82,5 +71,26 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	
+	
+<distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Packages</name>
+      <url>https://maven.pkg.github.com/salahatwa/Intelligent-validator</url>
+    </repository>
+  </distributionManagement>
 
 </project>
