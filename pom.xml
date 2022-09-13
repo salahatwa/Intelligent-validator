@@ -19,6 +19,13 @@
 		</plugins>
 	</build>
 
+<distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Packages</name>
+      <url>https://maven.pkg.github.com/salahatwa/Intelligent-validator</url>
+    </repository>
+  </distributionManagement>
 
 	<properties>
 		<junit.version>4.12</junit.version>
