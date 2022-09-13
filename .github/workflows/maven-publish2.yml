@@ -23,14 +23,12 @@ jobs:
         java-version: '8'
         distribution: 'temurin'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
-    - name: Generate settings.xml for Maven Builds by salah atwa.
-      uses: whelk-io/maven-settings-xml-action@v20
+        settings-path: $GITHUB_WORKSPACE/.github/workflows # location for the settings.xml file
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+      run: mvn deploy -s $GITHUB_WORKSPACE/.github/workflows/settings.xml
       env:
         GITHUB_TOKEN: ${{ github.token }}
